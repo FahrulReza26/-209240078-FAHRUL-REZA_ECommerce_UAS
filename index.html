@@ -4,7 +4,96 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FahrulRza Store</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e8f4fd;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #007acc;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    nav a, .cart {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .section {
+      display: none;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .product-card {
+      background-color: white;
+      border: 1px solid #ccc;
+      width: 200px;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .product-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    button {
+      display: block;
+      margin: 8px auto;
+      padding: 8px 12px;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005b99;
+    }
+
+    .cart-total {
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    footer {
+      background-color: #007acc;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -50,7 +139,6 @@
           <button onclick="addToCart(3, 'Dompet', 80000)">Tambah ke Keranjang</button>
           <button onclick="buyNow(3, 'Dompet', 80000)">Beli</button>
         </div>
-        <!-- Tambah produk ke-4 & ke-5 -->
         <div class="product-card">
           <img src="images/produk4.jpg" alt="Handbag">
           <h3>Handbag</h3>
@@ -79,9 +167,9 @@
     <section id="contact" class="section">
       <h2>Kontak Kami</h2>
       <form>
-        <input type="text" placeholder="Nama" required>
-        <input type="email" placeholder="Email" required>
-        <textarea placeholder="Pesan" required></textarea>
+        <input type="text" placeholder="Nama" required><br><br>
+        <input type="email" placeholder="Email" required><br><br>
+        <textarea placeholder="Pesan" required></textarea><br><br>
         <button type="submit">Kirim</button>
       </form>
     </section>
@@ -91,6 +179,47 @@
     <p>© 2025 FahrulRza Store | Email: FhrlRza@gmail.com | Telp: 0812-3456-7890</p>
   </footer>
 
-  <script src="js/script.js"></script>
+  <script>
+    // Navigasi antar section
+    function showSection(id) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => section.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    // Keranjang belanja
+    let cart = [];
+
+    // Fungsi Tambah ke Keranjang
+    function addToCart(id, nama, harga) {
+      cart.push({ id, nama, harga });
+      updateCart();
+    }
+
+    // Fungsi Beli Langsung
+    function buyNow(id, nama, harga) {
+      alert(`Terima kasih telah membeli ${nama} seharga Rp ${harga.toLocaleString('id-ID')}`);
+    }
+
+    // Update Tampilan Keranjang
+    function updateCart() {
+      const cartItems = document.getElementById('cart-items');
+      const cartTotal = document.getElementById('cart-total');
+      const cartCount = document.getElementById('cart-count');
+
+      cartItems.innerHTML = '';
+      let total = 0;
+
+      cart.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.textContent = `${item.nama} - Rp ${item.harga.toLocaleString('id-ID')}`;
+        cartItems.appendChild(itemDiv);
+        total += item.harga;
+      });
+
+      cartTotal.textContent = `Rp ${total.toLocaleString('id-ID')}`;
+      cartCount.textContent = cart.length;
+    }
+  </script>
 </body>
 </html>
