@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FahrulRza Store</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>FahrulRza Store</h1>
+    <nav>
+      <a href="#" onclick="showSection('home')">Home</a>
+      <a href="#" onclick="showSection('products')">Produk</a>
+      <a href="#" onclick="showSection('contact')">Kontak</a>
+      <div class="cart" onclick="showSection('cart')">
+        🛒 <span id="cart-count">0</span>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Home Section -->
+    <section id="home" class="section active">
+      <h2>Selamat Datang di FahrulRza Store</h2>
+      <p>Kami menyediakan produk-produk berkualitas dengan harga terjangkau.</p>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="section">
+      <div class="products">
+        <div class="product-card">
+          <img src="images/produk1.jpg" alt="Topi Bordir Polo Caps">
+          <h3>Topi Bordir Polo Caps</h3>
+          <p>Rp 100.000</p>
+          <button onclick="addToCart(1, 'Topi Bordir Polo Caps', 100000)">Tambah ke Keranjang</button>
+          <button onclick="buyNow(1, 'Topi Bordir Polo Caps', 100000)">Beli</button>
+        </div>
+        <div class="product-card">
+          <img src="images/produk2.jpg" alt="Tas Ransel">
+          <h3>Tas Ransel</h3>
+          <p>Rp 180.000</p>
+          <button onclick="addToCart(2, 'Tas Ransel', 180000)">Tambah ke Keranjang</button>
+          <button onclick="buyNow(2, 'Tas Ransel', 180000)">Beli</button>
+        </div>
+        <div class="product-card">
+          <img src="images/produk3.jpg" alt="Dompet">
+          <h3>Dompet</h3>
+          <p>Rp 80.000</p>
+          <button onclick="addToCart(3, 'Dompet', 80000)">Tambah ke Keranjang</button>
+          <button onclick="buyNow(3, 'Dompet', 80000)">Beli</button>
+        </div>
+        <!-- Tambah produk ke-4 & ke-5 -->
+        <div class="product-card">
+          <img src="images/produk4.jpg" alt="Handbag">
+          <h3>Handbag</h3>
+          <p>Rp 150.000</p>
+          <button onclick="addToCart(4, 'Handbag', 150000)">Tambah ke Keranjang</button>
+          <button onclick="buyNow(4, 'Handbag', 150000)">Beli</button>
+        </div>
+        <div class="product-card">
+          <img src="images/produk5.jpg" alt="Slingbag">
+          <h3>Slingbag</h3>
+          <p>Rp 125.000</p>
+          <button onclick="addToCart(5, 'Slingbag', 125000)">Tambah ke Keranjang</button>
+          <button onclick="buyNow(5, 'Slingbag', 125000)">Beli</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cart Section -->
+    <section id="cart" class="section">
+      <h2>Keranjang Belanja</h2>
+      <div id="cart-items"></div>
+      <div class="cart-total">Total: <span id="cart-total">Rp 0</span></div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <h2>Kontak Kami</h2>
+      <form>
+        <input type="text" placeholder="Nama" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Pesan" required></textarea>
+        <button type="submit">Kirim</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 FahrulRza Store | Email: FhrlRza@gmail.com | Telp: 0812-3456-7890</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
